@@ -14,7 +14,6 @@
     <% } %>
     <% if (locals.messages.info) { %>
         <% messages.info.forEach( el => { %>
-            <h1>There is an error</h1>
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
