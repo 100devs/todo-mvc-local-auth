@@ -18,6 +18,8 @@ const User = require('../models/User')
   
     if (validationErrors.length) {
       req.flash('errors', validationErrors)
+      //debug console statement
+      console.log('validation errors')
       return res.redirect('/login')
     }
     req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
@@ -25,6 +27,8 @@ const User = require('../models/User')
     passport.authenticate('local', (err, user, info) => {
       if (err) { return next(err) }
       if (!user) {
+        //console debug statement
+        console.log('user not found?')
         req.flash('errors', info)
         return res.redirect('/login')
       }
