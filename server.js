@@ -26,7 +26,7 @@ app.use(logger('dev'))
 // Sessions
 app.use(
     session({
-      secret: 'keyboard cat',
+      secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
       store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -38,7 +38,8 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(flash())
-  
+
+// Routes
 app.use('/', mainRoutes)
 app.use('/todos', todoRoutes)
  
