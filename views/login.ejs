@@ -4,9 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+    <title>Bill Tracker</title>
+    
 </head>
 <body>
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo"><img class="responsive-img" src="/assets/bill_tracker_logo_small.png"></a>
+            <ul class="right">
+                <li><a class="waves-effect waves-light btn z-depth-1" id="signup-btn" href="/signup">Signup</a></li>
+            </ul>
+        </div>
+    </nav>
+    <h1>Bill Tracker Login</h1>
     <% if (locals.messages.errors) { %>
         <% messages.errors.forEach( el => { %>
             <div class="alert alert-danger"><%= el.msg %></div>
@@ -17,10 +29,27 @@
             <div class="alert alert-danger"><%= el.msg %></div>
         <% }) %>    
     <% } %>
-    <form action="/login" method="POST">
-        <input type="email" name="email" placeholder="Email">
-        <input type="password" name="password" placeholder="Password">
-        <input type="submit">
-    </form>
+    <section class="form-container z-depth-3">
+        <h3 class="form-header">Login to your account: </h3>
+    <div class="row">
+        <div>
+            <form action="/login" method='POST'>
+                <div class="input-field">
+                    <input type="email"  name='email'>
+                    <label for="text">Email</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" name="password">
+                    <label for="text">Password</label>
+                </div>
+                <div class="input-field center">
+                    <button class="btn login-submit form-submit z-depth-3">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    </section>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>

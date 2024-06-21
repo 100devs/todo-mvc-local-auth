@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill Tracker</title>
+    <script src="https://kit.fontawesome.com/8f020836b6.js" crossorigin="anonymous"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="s12">
+    <nav>
+        <div class="nav-wrapper">
+            <a href="/" class="brand-logo left"><img class="responsive-img" src="/assets/bill_tracker_logo_small.png"></a>
+            <ul class="right">
+                <li><a class="waves-effect waves-light btn z-depth-1" href="/logout">Logout</a></li>
+            </ul>
+        </div>
+    </nav> 
+    <h1>Track Your Bills!</h1>
+
+    <table class="highlight">
+        <thead class="table-headers">
+        <tr>
+            <th>Company Name</th>
+            <th>Description</th>
+            <th>Amount Due</th>
+            <th>Due Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% billtrackers.forEach(el => {%>
+            <tr>
+                <td class="billtrackerItem" data-id="<%=el._id%>"><span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.companyName %></span></td>
+                <td class="billtrackerItem" data-id="<%=el._id%>"><span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.description %></span></td>
+                <td class="billtrackerItem" data-id="<%=el._id%>"><span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= `$${el.amountDue.toLocaleString(undefined,
+                    {'minimumFractionDigits':2,'maximumFractionDigits':2})}` %></span></td>
+                <td class="billtrackerItem" data-id="<%=el._id%>"><span class='<%= el.completed === true ? 'completed' : 'not'%>'><%= el.dueDate %></span></td>
+                <td class="billtrackerItem" data-id="<%=el._id%>"><span class='fa-solid fa-trash-can del'>  </span></td>
+            </tr>
+        <% }) %>
+        </tbody>
+    </table>
+    <p class="center-align paid-text">Click on the text to change the status of a bill.</p>
+    <div><h2 class='billSum-header'><%= left === 1 ? `${user.userName} has ${left} bill to pay for a total of \$${billSum}` : `${user.userName} has ${left} bills to pay for a total of \$${billSum}` %></h2></div>
+
+   <section class="section container form-container z-depth-3">
+    <h3 class="form-header">Input your bill information below: </h3>
+    <div class="row">
+        <div>
+            <form action="/billtracker/createBillTracker" method='POST'>
+                <div class="input-field">
+                    <input type="text"  name='companyName'>
+                    <label for="text">Company Name</label>
+                </div>
+                <div class="input-field">
+                    <input type="text" name='description'>
+                    <label for="text">Description</label>
+                </div>
+                <div class="input-field">
+                     <input type="number" name='amountDue' step=".01">
+                    <label for="number">Amount Due</label>
+                </div>
+                <div class="input-field">
+                     <input type="text"  class="datepicker" name='dueDate'>
+                    <label for="date">Bill Due Date</label>
+                </div>
+                <div class="input-field center">
+                    <button class="btn form-submit z-depth-3">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+ </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>
+

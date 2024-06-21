@@ -1,10 +1,233 @@
-h1{
-    color: red;
+* {
+    box-sizing: border-box;
 }
+
+body {
+    color: #233142;
+    background-color: rgb(220, 220, 220);
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+} 
+
+nav, .nav-wrapper {
+    width: 100vw;
+}
+
+.brand-logo{
+    margin-left: 1%;
+}
+
+.indexImage {
+    border-radius: 20px;
+}
+
 .completed{
     text-decoration: line-through;
-    color: gray;
+    color: #455d7a;
 }
-.not{
-    text-decoration: underline;
+
+h1, h2 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.billSum-header {
+    font-size: 2rem;
+}
+
+table {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.btn {
+    font-size: 1rem;
+    margin: 20px auto 0 auto;
+    border-radius: 10px;
+    color: white;
+    background-color: #455d7a;
+}
+
+.btn:hover {
+    background-color: rgb(227, 227, 227);
+    color: #233142;
+}
+
+.form-submit {
+    background-color: #ee6e73;
+    width: 100%;
+    border: 1px solid transparent;
+}
+
+.form-submit:hover {
+    background-color: rgb(227, 227, 227);
+    color: #233142;
+}
+
+.form-header {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.form-container {
+    width: 35%;
+    margin: 40px auto;
+    border: 2px solid transparent;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+.billTracker-header {
+    width: 90%;
+    margin-top: 80px;
+    margin-bottom: 75px;
+    font-weight: bold;
+}
+
+.index-header {
+    width: 90%;
+    font-size: 1.8rem;
+    line-height: 2rem;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.index-header-span {
+    display: block;
+    margin-top: 10px;
+}
+
+.paid-text {
+    font-size: 0.8rem;
+    color: #455d7a;
+}
+
+.homepage{
+    margin-top: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+    .row.inIndex{
+        width: 990px
+    }
+  }
+
+@media only screen and (min-width: 1180px) and (max-width: 1399px) {
+    .row.inIndex{
+        width: 800px;
+    }
+
+    h1.billTracker-header{
+        margin: 40px auto 40px; 
+    }
+
+    h1{
+        font-size:4em;
+    }
+
+    p.index-header {
+        font-size:1.4rem;
+        margin: 1em auto;
+    }
+}
+
+
+@media only screen and (min-width: 800px) and (max-width: 1179px) {
+    .row.inIndex{
+        width: 600px;
+        display: flex;
+    }
+    h1.billTracker-header{
+        margin: 40px auto 40px; 
+    }
+
+    h1{
+        font-size:3em;
+        width:100%;
+    }
+
+    p.index-header {
+        font-size:1.1rem;
+        margin: 1em auto;
+    }
+
+    .form-container{
+        width: 50%;
+    }
+}
+
+@media only screen and (min-width: 700px) and (max-width: 1000px) {
+    .table-headers {
+        margin-left: 22%;
+    }
+}
+
+@media only screen and (max-width: 992px){
+nav .brand-logo {
+        padding-left: 70px;
+        left: 0;
+    }
+    table {
+        width: 90%;
+    }
+}
+
+@media only screen and (min-width: 600px) and (max-width: 700px) {
+    .table-headers {
+        margin-left: 10%;
+    }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .table-headers {
+        margin-left: 6%;
+        font-size: 10px;
+    }
+    .billSum-header{
+        font-size: 20px;
+    }
+    .indexImage {
+        height: 460px;
+        width: 460px;
+    }
+
+    nav, nav .nav-wrapper i, nav a.sidenav-trigger, nav a.sidenav-trigger i {
+        height: 64px;
+        line-height: 64px;
+    }
+}
+
+
+@media only screen and (max-width: 799px) {
+    
+    h1{
+        font-size:2.5em;
+        margin:.5em auto;
+    }
+    p.index-header {
+        font-size:1.5rem;
+    }
+
+    .billTracker-header {
+        margin-top:0;
+        margin-bottom: 1em;
+    }
+    .index-header {
+        width:100%;
+    }
+    .form-container{
+        width: 70%;
+    }
+    img.responsive-img.indexImage {
+        width: 55%;
+        margin-top: 5%;
+    }
+    .col.s12.l6.offset-12 {
+        display: flex;
+        justify-content: center;
+    }
 }

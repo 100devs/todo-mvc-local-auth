@@ -1,24 +1,26 @@
+![billTracker](https://user-images.githubusercontent.com/52755177/188661307-18bf373e-d925-40a2-abc3-e8938fe9051d.gif)
 # Introduction
+Bill Tracking App
 
-A Simple ToDo App is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app 
+A simple app to track your bills due dates, paid and unpaid bill indicator, your own personal bill tracker like your google calender.
+It is built with NodeJs using the MVC Architecture, we have also implemented "authorization" using Passport so folx can sign up, customize & personalize the app 
+
+---
+# Tech Stack Used
+
+Nodejs, ejs, express, express-flash, express-session, mongodb, mongoose, passport, passport-local, validator
+
+Nodejs and Express for a simpler app server,  Mongodb database, Ejs template enging for the front-end. 
+
 
 ---
 
-> Be sure to add that lovely star 😀 and fork it for your own copy
 
----
+# Why was this stack chosen?
 
-# Objectives
+Node is a pretty lightweight server choice and can be spun up fairly easily. We needed a backend that could send a different response based on the result of another controller and the ability to dynamically render file. By using Express' built in middleware architecture we could cleanly write fallbacks. Mongodb  we needed a very simple yet powerful database to handle all of our user data. Ejs template engine a very simple and yet powerful template for the front -end (view).
 
-- It's a beginner level app created to understand how MVC concept and logins are added
 
----
-
-# Who is this for? 
-
-- It's for beginners & intermediates with little more experience, to help understand the various aspects of building a node app with some complex features
-
----
 
 # Packages/Dependencies used 
 
