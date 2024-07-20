@@ -1,5 +1,6 @@
 h1{
-    color: red;
+    color: darkgreen;
+    padding-bottom: 50px;
 }
 .completed{
     text-decoration: line-through;
@@ -7,6 +8,9 @@ h1{
 }
 .not{
     text-decoration: underline;
+}
+img {
+    padding-bottom: 20px;
 }
 
 /* Login Form CSS (https://codepen.io/colorlib/pen/rxddKy) */
