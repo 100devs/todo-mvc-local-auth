@@ -4,11 +4,33 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Todo List</title>
+    <link rel="stylesheet" href="css/style.css">
+    
 </head>
 <body>
-    <h1>Create Your VERY OWN Todolist!</h1>
-    <a href="/login"> Login</a>
-    <a href="/signup"> Signup</a>
+    <div class="login-page">
+        <div class="form">
+          <form class="register-form" action="/signup" method="POST">
+            <input type="text" name="userName" placeholder="name"/>
+            <input type="password" name="password" placeholder="password"/>
+            <input type="text" name="email" placeholder="email address"/>
+            <input class = 'sub-btn' type="submit" value="create account"></input>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+          </form>
+          <form class="login-form" action="/login" method="POST">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="password" placeholder="Password">
+            <input class = 'sub-btn' type="submit" value="login"></input>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
+          </form>
+        </div>
+      </div>
 </body>
+<script
+    src="https://code.jquery.com/jquery-3.7.1.js"
+    integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+    crossorigin="anonymous">
+</script>
+<script src="js/index.js"></script> 
 </html>
