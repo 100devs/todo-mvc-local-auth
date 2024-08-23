@@ -1,37 +1,33 @@
 const passport = require('passport')
 const validator = require('validator')
 const User = require('../models/User')
+const bcrypt = require('bcrypt')
 
- exports.getLogin = (req, res) => {
-    if (req.user) {
-      return res.redirect('/todos')
-    }
-    res.render('login', {
-      title: 'Login'
-    })
-  }
+//  exports.getLogin = (req, res) => {
+//     if (req.user) {
+//       return res.redirect('/todos')
+//     }
+//     res.render('login', {
+//       title: 'Login'
+//     })
+//   }
   
   exports.postLogin = (req, res, next) => {
-    const validationErrors = []
-    if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
-    if (validator.isEmpty(req.body.password)) validationErrors.push({ msg: 'Password cannot be blank.' })
-  
-    if (validationErrors.length) {
-      req.flash('errors', validationErrors)
-      return res.redirect('/login')
-    }
-    req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
-  
     passport.authenticate('local', (err, user, info) => {
-      if (err) { return next(err) }
-      if (!user) {
-        req.flash('errors', info)
-        return res.redirect('/login')
+      if (err) {
+        return next(err)
       }
-      req.logIn(user, (err) => {
-        if (err) { return next(err) }
-        req.flash('success', { msg: 'Success! You are logged in.' })
-        res.redirect(req.session.returnTo || '/todos')
+  
+      if (!user) {
+        return res.status(401).json({ message: info.message })
+      }
+  
+      req.logIn(user, err => {
+        if (err) {
+          return next(err)  
+        }
+  
+        res.redirect('/todos')
       })
     })(req, res, next)
   }
@@ -47,50 +43,47 @@ const User = require('../models/User')
     })
   }
   
-  exports.getSignup = (req, res) => {
-    if (req.user) {
-      return res.redirect('/todos')
-    }
-    res.render('signup', {
-      title: 'Create Account'
-    })
-  }
+  // exports.getSignup = (req, res) => {
+  //   if (req.user) {
+  //     return res.redirect('/todos')
+  //   }
+  //   res.render('signup', {
+  //     title: 'Create Account'
+  //   })
+  // }
   
-  exports.postSignup = (req, res, next) => {
-    const validationErrors = []
-    if (!validator.isEmail(req.body.email)) validationErrors.push({ msg: 'Please enter a valid email address.' })
-    if (!validator.isLength(req.body.password, { min: 8 })) validationErrors.push({ msg: 'Password must be at least 8 characters long' })
-    if (req.body.password !== req.body.confirmPassword) validationErrors.push({ msg: 'Passwords do not match' })
+  exports.postSignup = async(req, res) => {
+    const { userName, email, password } = req.body
   
-    if (validationErrors.length) {
-      req.flash('errors', validationErrors)
-      return res.redirect('../signup')
-    }
-    req.body.email = validator.normalizeEmail(req.body.email, { gmail_remove_dots: false })
+    try {
+      // Check if user already exists
+      let user = await User.findOne({ email })
   
-    const user = new User({
-      userName: req.body.userName,
-      email: req.body.email,
-      password: req.body.password
-    })
-  
-    User.findOne({$or: [
-      {email: req.body.email},
-      {userName: req.body.userName}
-    ]}, (err, existingUser) => {
-      if (err) { return next(err) }
-      if (existingUser) {
-        req.flash('errors', { msg: 'Account with that email address or username already exists.' })
-        return res.redirect('../signup')
+      if (user) {
+        return res.status(400).json({ message: 'User already exists' })
       }
-      user.save((err) => {
-        if (err) { return next(err) }
-        req.logIn(user, (err) => {
-          if (err) {
-            return next(err)
-          }
-          res.redirect('/todos')
-        })
+  
+      // Create new user
+      user = new User({ userName, email, password })
+  
+      // Hash the password
+      const salt = await bcrypt.genSalt(10)
+      user.password = await bcrypt.hash(password, salt)
+  
+      // Save user to DB
+      await user.save();
+  
+      //res.json({ message: 'Registration successful' });
+  
+      req.logIn(user, (err) => {
+        if (err) {
+          return next(err)
+        }
+        res.redirect('/todos')
       })
-    })
+      //res.redirect('/home')
+    } catch (err) {
+      console.error(err)
+      res.status(500).json({ message: 'Server error' })
+    }
   }

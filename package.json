@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server"
   },
   "author": "",
   "license": "MIT",
@@ -18,11 +19,13 @@
     "express-flash": "^0.0.2",
     "express-session": "^1.17.1",
     "mongodb": "^3.6.5",
-    "mongoose": "^5.12.3",
+    "mongoose": "^8.3.4",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.7",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
     "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
   }
 }

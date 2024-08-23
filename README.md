@@ -1,44 +1,32 @@
-# Introduction
+# Todo List App
+Create your own todo list powered by Passport.js, EJS, Node, MongoDB, and Express.
 
-A Simple ToDo App is built using the MVC Architecture, we have also implemented "authorization" so folx can sign up, customize & personalize the app 
+![todolist](https://github.com/user-attachments/assets/5b89df51-c4dc-4676-b4d9-6e832e1fcfdb)
 
----
+# Features
 
-> Be sure to add that lovely star 😀 and fork it for your own copy
+- Custom user profiles and authentication powered by Passport.js
+- Add, delete, and mark todo list items as complete
 
----
-
-# Objectives
-
-- It's a beginner level app created to understand how MVC concept and logins are added
-
----
-
-# Who is this for? 
-
-- It's for beginners & intermediates with little more experience, to help understand the various aspects of building a node app with some complex features
-
----
-
-# Packages/Dependencies used 
-
-bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, passport, passport-local, validator
-
----
-
-# Install all the dependencies or node packages used for development via Terminal
+#Installation
 
 `npm install` 
-
----
-
-# Things to add
-
-- Create a `.env` file and add the following as `key: value` 
+  - Create a `.env` file and add the following as `key: value` 
   - PORT: 2121 (can be any port example: 3000) 
-  - DB_STRING: `your database URI` 
- ---
+  - DB_STRING: `your database URI`
  
- Have fun testing and improving it! 😎
+## Lessons Learned
 
+The goal of rebuilding this project was to become more familiar with the structure of full-stack apps, particularly MVC architecture. Most of the code that connected the backend to MongoDB needed to be rewritten to work in 2024.
 
+The biggest challenge was rewriting the authentication code that allowed Passport to create and maintain sessions. The order that middleware is introduced in the main Node server file is critical to authentication working properly.
+
+## Future enhancements
+
+  - The signup form would benefit from email and password validation. 
+  - Todo list items should be editable. 
+  - The frontend would benefit from having a more responsive framework like React.
+
+## How It's Made
+
+bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, nodemon, passport, passport-local, validator

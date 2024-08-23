@@ -22,10 +22,11 @@ app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(logger('dev'))
+
 // Sessions
 app.use(
     session({
-      secret: 'keyboard cat',
+      secret: process.env.SECRET,
       resave: false,
       saveUninitialized: false,
       store: new MongoStore({ mongooseConnection: mongoose.connection }),
@@ -36,11 +37,12 @@ app.use(
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use(flash())
-  
+//app.use(flash())
+
+// Routes
 app.use('/', mainRoutes)
 app.use('/todos', todoRoutes)
  
 app.listen(process.env.PORT, ()=>{
-    console.log('Server is running, you better catch it!')
+    console.log(`Server is running on: http://localhost:${process.env.PORT}/`)
 })    
