@@ -4,25 +4,27 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node --watch --env-file=./config/.env server.js",
+    "dev": "node --inspect --watch --env-file=./config/.env server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write ."
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "connect-mongo": "^3.2.0",
-    "dotenv": "^8.2.0",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
+    "bcrypt": "^5.1.1",
+    "connect-mongo": "^5.1.0",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2",
     "express-flash": "^0.0.2",
-    "express-session": "^1.17.1",
-    "mongodb": "^3.6.5",
-    "mongoose": "^5.12.3",
+    "express-session": "^1.18.0",
+    "mongoose": "^8.5.4",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.7",
-    "passport": "^0.6.0",
+    "passport": "^0.7.0",
     "passport-local": "^1.0.0",
-    "validator": "^13.6.0"
+    "validator": "^13.12.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.3.3"
   }
 }

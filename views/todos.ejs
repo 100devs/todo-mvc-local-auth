@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+        <% if (locals.messages.success) { %>
+        <% messages.success.forEach( el => { %>
+            <div class="alert alert-danger"><%= el.msg %></div>
+        <% }) %>    
+    <% } %>
+
     <h1>Todos</h1>
     <ul>
     <% todos.forEach( el => { %>
