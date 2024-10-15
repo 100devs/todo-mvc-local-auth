@@ -6,5 +6,8 @@ h1{
     color: gray;
 }
 .not{
-    text-decoration: underline;
+    text-decoration: none;
+}
+.todoItem {
+    list-style: none;
 }
