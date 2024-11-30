@@ -39,6 +39,16 @@ bcrypt, connect-mongo, dotenv, ejs, express, express-flash, express-session, mon
   - DB_STRING: `your database URI` 
  ---
  
+
+# Changes made 11/18/2024:
+
+* updated view and model to "soft-delete" items instead of removing from DB
+
+* updated gloabl font-family and .app-container styling in style.css
+
+* added light/dark mode functionality via class toggling button
+
+
  Have fun testing and improving it! 😎
 
 

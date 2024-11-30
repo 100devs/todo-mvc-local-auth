@@ -1,17 +1,21 @@
-const deleteBtn = document.querySelectorAll('.del')
-const todoItem = document.querySelectorAll('span.not')
-const todoComplete = document.querySelectorAll('span.completed')
+let deleteBtn = document.querySelectorAll('.del')
+let todoItem = document.querySelectorAll('span.not')
+let todoComplete = document.querySelectorAll('span.completed')
 
-Array.from(deleteBtn).forEach((el)=>{
-    el.addEventListener('click', deleteTodo)
-})
-
-Array.from(todoItem).forEach((el)=>{
-    el.addEventListener('click', markComplete)
-})
-
-Array.from(todoComplete).forEach((el)=>{
-    el.addEventListener('click', markIncomplete)
+// Add event listeners using event delegation
+document.querySelector('ul').addEventListener('click', (event) => {
+    // For marking complete
+    if (event.target.classList.contains('not')) {
+        markComplete.call(event.target)
+    }
+    // For marking incomplete
+    else if (event.target.classList.contains('completed')) {
+        markIncomplete.call(event.target)
+    }
+    // For deleting
+    else if (event.target.classList.contains('del')) {
+        deleteTodo.call(event.target)
+    }
 })
 
 async function deleteTodo(){
@@ -44,7 +48,8 @@ async function markComplete(){
         })
         const data = await response.json()
         console.log(data)
-        location.reload()
+        this.classList.remove('not')
+        this.classList.add('completed')
     }catch(err){
         console.log(err)
     }
@@ -62,8 +67,32 @@ async function markIncomplete(){
         })
         const data = await response.json()
         console.log(data)
-        location.reload()
+        this.classList.remove('completed')
+        this.classList.add('not')
     }catch(err){
         console.log(err)
     }
 }
+
+document.querySelector('.dark-mode').addEventListener('click', darkMode);
+
+// In your existing darkMode function
+function darkMode() {
+    const appContainer = document.querySelector('.app-container');
+    appContainer.classList.toggle('dark-theme');
+    
+    // Save the current state to localStorage
+    localStorage.setItem('darkMode', appContainer.classList.contains('dark-theme'));
+    
+    console.log('toggled')
+}
+
+// On page load, check and apply dark mode from localStorage
+document.addEventListener('DOMContentLoaded', () => {
+    const appContainer = document.querySelector('.app-container');
+    const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+    
+    if (savedDarkMode) {
+        appContainer.classList.add('dark-theme');
+    }
+});

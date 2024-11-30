@@ -1,10 +1,61 @@
-h1{
-    color: red;
+body{
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+h1{
+    color: hsl(0, 0%, 41%);
+}
+
+.app-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Centers content vertically */
+    min-height: 100vh; /* Makes the container fill the viewport height */
+    padding: 20px; /* Adds spacing around the content */
+    gap: 15px; /* Adds space between child elements */
+    background-color: #f9f9f9; /* Light background color for a clean look */
+    color: #333; /* Slightly softer black for text */
+    font-family: 'Arial', sans-serif; /* Clean font choice */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+    border-radius: 8px; /* Slightly rounded corners */
+    max-width: 800px; /* Limits the container width */
+    margin: 0 auto; /* Centers the container horizontally */
+    box-sizing: border-box; /* Ensures padding doesn't affect total width */
+}
+
+.del {
+    color: #ff4d4d; /* Initial color for delete button */
+    cursor: pointer; /* Pointer cursor to indicate it's clickable */
+    font-weight: bold; /* Make the text stand out */
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.del:hover {
+    color: #ff1a1a; /* Darker shade on hover */
+    text-decoration: underline; /* Underline to emphasize action */
+    transform: scale(1.1); /* Slightly enlarge the text */
+}
+
+.completed, .not {
+    cursor: pointer; /* Indicates the item is interactive */
+    transition: color 0.2s ease, text-decoration 0.2s ease; /* Smooth transitions */
+}
+
 .completed{
     text-decoration: line-through;
     color: gray;
 }
+
 .not{
     text-decoration: underline;
+}
+
+.dark-mode{
+    margin: 10px;
+}
+
+.dark-theme{
+    background-color: black;
+    color: white;
 }

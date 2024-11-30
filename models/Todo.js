@@ -9,6 +9,11 @@ const TodoSchema = new mongoose.Schema({
     type: Boolean,
     required: true,
   },
+  deleted: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
   userId: {
     type: String,
     required: true
